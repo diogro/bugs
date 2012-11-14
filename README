@@ -1,0 +1,2 @@
+sudo apt-add-repository ppa:marutter/rrutter
+install jags r-cran-rjags r-cran-r2jags r-cran-r2winbugs
