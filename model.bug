@@ -1,8 +1,11 @@
 model {
-    for (j in 1:J){
-        y[j] ~ dnorm (theta[j], tau.y[j])
-        theta[j] ~ dnorm (mu.theta, tau.theta)
-        tau.y[j] <- pow(sigma.y[j], -2)
+    for (sp in 1:n.sp){
+        for (ind in 1:n.ind){
+            traits[[sp]][ind] ~ rmvnorm (theta[sp], tau[sp])
+        }
+        theta[sp] ~ rmvnorm (mu.theta, tau.theta)
+        tau[sp] ~ invwishrad ? 
+        /*tau.y[sp] <- pow(sigma.y[j], -2)*/
     }
     mu.theta ~ dnorm (0, 1.0E-6)
     tau.theta <- pow(sigma.theta, -2)
